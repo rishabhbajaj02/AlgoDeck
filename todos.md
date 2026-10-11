@@ -10,6 +10,7 @@ Source of requirements: `prompt.txt`. Updated as each phase is verified.
 - [x] Phase 5: Safe structured logging, security, seed data, meaningful automated tests.
 - [x] Phase 6: Build, strict TypeScript checks, unit/integration/frontend tests and dependency audit.
 - [x] Phase 7: README, OpenAPI, deployment and troubleshooting documentation.
+- [x] Documentation follow-up: Expand project README with architecture, configuration, import formats, verification and current Azure hosting. Checked all 16 local links, CSV/JSON examples against the importer and documented root commands against package.json.
 - [x] User setup: Configure existing Supabase project URL and public key; apply migration.
 - [x] User setup: Identify and apply Ponytail 5.1.0.
 - [x] Live verification: Supabase sign-in/restoration, collection import/edit, persisted practice, rating/history and analytics.
