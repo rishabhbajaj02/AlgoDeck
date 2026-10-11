@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: algodeck
+resources:
+  - namespace.yaml
+  - api.yaml
+  - web.yaml
+configMapGenerator:
+  - name: algodeck-config
+    literals:
+      - NODE_ENV=production
+      - PORT=3001
+      - LOG_LEVEL=info
+      - TRUST_PROXY=1
+      - FRONTEND_ORIGIN=http://localhost:8080,http://127.0.0.1:8080
+      - SUPABASE_URL=https://your-project.supabase.co
+      - SUPABASE_PUBLIC_KEY=replace-with-public-publishable-key

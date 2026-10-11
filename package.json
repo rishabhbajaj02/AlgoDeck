@@ -1,0 +1,32 @@
+{
+  "name": "algodeck",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "start": "node backend/dist/backend/src/server.js",
+    "dev": "npm run build -w shared && concurrently -n api,web -c blue,green \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w shared && npm run build -w backend && npm run build -w frontend",
+    "lint": "tsc --noEmit -p shared/tsconfig.json && npm run lint -w backend && npm run lint -w frontend",
+    "test": "npm run build -w shared && npm run test -w backend && npm run test -w frontend",
+    "test:integration": "npm run build -w shared && npm run test:integration -w backend",
+    "db:migrate": "node scripts/database.mjs migrate",
+    "db:seed": "node scripts/database.mjs seed",
+    "security": "npm audit --omit=dev",
+    "format": "prettier --write \"{frontend,backend,shared}/src/**/*.{ts,tsx,css}\" \"{frontend,backend}/tests/**/*.ts\" \"*.json\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "prettier": "^3.9.10",
+    "supabase": "^2.50.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: algodeck-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: algodeck-api
+  template:
+    metadata:
+      labels:
+        app: algodeck-api
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: api
+          image: algodeck-api:local
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - configMapRef:
+                name: algodeck-config
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 384Mi
+          startupProbe:
+            httpGet:
+              path: /api/health
+              port: 3001
+            periodSeconds: 5
+            failureThreshold: 24
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3001
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /api/ready
+              port: 3001
+            periodSeconds: 20
+            timeoutSeconds: 10
+      terminationGracePeriodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: algodeck-api
+spec:
+  type: ClusterIP
+  selector:
+    app: algodeck-api
+  ports:
+    - port: 3001
+      targetPort: 3001

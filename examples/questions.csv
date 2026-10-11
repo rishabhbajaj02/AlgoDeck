@@ -1,0 +1,13 @@
+title,content,category,pattern,source_url
+Two sum,Find a pair that adds to a target and explain the complexity.,Algorithms,Hash map,
+Longest unique substring,Find the longest substring without repeated characters.,Algorithms,Sliding window,
+Merge intervals,Merge all overlapping intervals.,Algorithms,Intervals,
+Tree traversal,Compare breadth-first and depth-first traversal.,Algorithms,Trees,
+Shortest path,Find a shortest path in an unweighted graph.,Algorithms,Graphs,
+Topological sorting,Order dependent tasks and detect cycles.,Algorithms,Graphs,
+Coin change,Find the minimum coins needed for a total.,Algorithms,Dynamic programming,
+Cache design,Design a cache with eviction and consistency.,System design,Caching,
+Rate limiter,Design a distributed rate limiter.,System design,Distributed systems,
+Database indexing,Explain when an index helps or hurts.,System design,Storage,
+Concurrency,Describe races and atomicity.,Fundamentals,Concurrency,
+Technical tradeoff,Describe a tradeoff and how you validated it.,Fundamentals,Communication,

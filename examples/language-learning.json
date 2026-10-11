@@ -1,0 +1,17 @@
+{
+  "version":1,
+  "questions":[
+    {"title":"Bonjour","content":"Translate this French greeting into English.","category":"French","pattern":"Greetings","metadata":{"hint":"It is used in the morning and during the day.","solution":"Hello or good morning."}},
+    {"title":"Merci","content":"Translate this word and use it in a sentence.","category":"French","pattern":"Everyday words","metadata":{"solution":"Thank you."}},
+    {"title":"Au revoir","content":"When would you use this phrase?","category":"French","pattern":"Greetings","metadata":{"solution":"Goodbye."}},
+    {"title":"Gracias","content":"Translate this Spanish word.","category":"Spanish","pattern":"Everyday words","metadata":{"solution":"Thank you."}},
+    {"title":"Buenos días","content":"Translate this phrase and explain when to use it.","category":"Spanish","pattern":"Greetings","metadata":{"solution":"Good morning."}},
+    {"title":"Por favor","content":"Translate this phrase into English.","category":"Spanish","pattern":"Everyday words","metadata":{"solution":"Please."}},
+    {"title":"Guten Morgen","content":"Translate this German greeting.","category":"German","pattern":"Greetings","metadata":{"solution":"Good morning."}},
+    {"title":"Danke","content":"Translate this German word.","category":"German","pattern":"Everyday words","metadata":{"solution":"Thank you."}},
+    {"title":"Bitte","content":"Give two common meanings of this German word.","category":"German","pattern":"Everyday words","metadata":{"solution":"Please, or you are welcome."}},
+    {"title":"Buongiorno","content":"Translate this Italian greeting.","category":"Italian","pattern":"Greetings","metadata":{"solution":"Good morning or good day."}},
+    {"title":"Grazie","content":"Translate this Italian word.","category":"Italian","pattern":"Everyday words","metadata":{"solution":"Thank you."}},
+    {"title":"Arrivederci","content":"When is this Italian expression used?","category":"Italian","pattern":"Greetings","metadata":{"solution":"To say goodbye."}}
+  ]
+}

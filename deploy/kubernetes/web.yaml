@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: algodeck-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: algodeck-web
+  template:
+    metadata:
+      labels:
+        app: algodeck-web
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        fsGroup: 101
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: web
+          image: algodeck-web:local
+          ports:
+            - containerPort: 8080
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 250m
+              memory: 96Mi
+          volumeMounts:
+            - name: temporary
+              mountPath: /tmp
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            periodSeconds: 10
+      volumes:
+        - name: temporary
+          emptyDir:
+            sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: algodeck-web
+spec:
+  type: ClusterIP
+  selector:
+    app: algodeck-web
+  ports:
+    - port: 8080
+      targetPort: 8080
